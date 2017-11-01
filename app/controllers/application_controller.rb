@@ -20,4 +20,8 @@ class ApplicationController < Sinatra::Base
     erb :'users/login'
   end
 
+  get '/user-agreement' do
+    erb :'users/agreement'
+  end
+
 end
