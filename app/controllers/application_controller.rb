@@ -28,6 +28,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
+      user = User.find_by_id(session[:user_id])
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
@@ -51,7 +52,7 @@ class ApplicationController < Sinatra::Base
 
   get '/users/:id' do
     if logged_in?
-      @user = User.find_by_slug(params[:id])
+      @user = User.find_by_id(params[:id])
       erb :'users/items'
     else
       redirect '/login'
