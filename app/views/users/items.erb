@@ -1,17 +1,17 @@
 <h2> Your current inventory of items </h2>
 <br>
-<a href ='/items/new'> To add a new item to your inventory click here (link will be functional soon) </a>
+<a href ='/items/new'> To add a new item to your inventory click here</a>
 <br>
 <% @user.items.each do |i| %>
   <p> Name of item: <%= i.name %> </p>
   <br>
   <p> Description: <%= i.description %> </p>
   <br>
-  <p> Tradeable? <%= i.tradeable? %> </p>
+  <p> Tradeable? (if true it is publicly viewable) <%= i.tradeable? %> </p>
   <br>
   <p> Condition: <%= i.condition %> </p>
   <br>
-  <p> Asking Price: <%= i.asking_price %> </p>
+  <p> Asking Price: $ <%= i.asking_price %> </p>
   <br>
   <p> Keywords (help others find your item): <%= i.keywords %> </p>
   <br>
@@ -20,4 +20,4 @@
   <br>
 <% end %>
 <br>
-<a href ='/items/new'> To add a new item to your inventory click here (link will be functional soon) </a>
+<a href ='/items/new'> To add a new item to your inventory click here </a>
