@@ -1,6 +1,19 @@
-<h1> Add a new item to your inventory </h1>
+<h2> Edit Item </h2>
 <br>
-<form action= '/items' method = "post">
+<p> Name of item: <%= @item_to_edit.name %> </p>
+<br>
+<p> Description: <%= @item_to_edit.description %> </p>
+<br>
+<p> Tradeable? (if true it is publicly viewable) <%= @item_to_edit.tradeable? %> </p>
+<br>
+<p> Condition: <%= @item_to_edit.condition %> </p>
+<br>
+<p> Asking Price: $ <%= @item_to_edit.asking_price %> </p>
+<br>
+<p> Keywords (help others find your item): <%= @item_to_edit.keywords %> </p>
+<br>
+<form action= '/items/<%= @item_to_edit.id %>' method = "post">
+  <input type="hidden" name="_method" value="patch">
   <label>Name: </label>
   <input type="text" name="name" />
   <br>
@@ -21,5 +34,5 @@
   <label>Keywords: </label>
   <input type="text" name="keywords" />
   <br>
-  <input value="Save new item" type="submit"/>
+  <input value="submit edit" type="submit"/>
 </form>

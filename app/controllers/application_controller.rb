@@ -103,6 +103,19 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/items/:id/edit' do
+    if logged_in?
+      @item_to_edit = Item.find(params[:id])
+      if @item_to_edit.user_id == session[:user_id]
+        erb :'/items/edit_item'
+      else
+        redirect '/items'
+      end
+    else
+      redirect '/login'
+    end
+  end
+
 
 
   helpers do
