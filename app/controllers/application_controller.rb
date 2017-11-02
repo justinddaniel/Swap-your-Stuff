@@ -126,13 +126,11 @@ class ApplicationController < Sinatra::Base
       @item_to_edit.description = params[:description]
       @item_to_edit.save
     end
-    if params[:tradeable?] == true
-      @item_to_edit.tradeable?
-      @item_to_edit.save
+    if params[:tradeable?] == "true"
+      @item_to_edit.update_attributes(tradeable?: "true")
     end
-    if params[:tradeable?] == false
-      @item_to_edit.tradeable?
-      @item_to_edit.save
+    if params[:tradeable?] == "false"
+      @item_to_edit.update_attributes(tradeable?: "false")
     end
     if params[:condition] != ""
       @item_to_edit.condition = params[:condition]
