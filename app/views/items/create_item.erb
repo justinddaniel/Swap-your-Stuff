@@ -1,0 +1,25 @@
+<h1> Add a new item to your inventory </h1>
+<br>
+<form action= '/items' method = "post">
+  <label>Name: </label>
+  <input type="text" name="name" />
+<br>
+<label>Description: </label>
+<input type="text" name="description" />
+<br>
+<label>Tradeable? </label>
+<input type="checkbox" name="tradeable?" value = "true"/>
+<br>
+<p> Note: checking 'true' makes your item publicly viewable. </p>
+<br>
+<label>Condition: </label>
+<input type="text" name="condition" />
+<br>
+<label>Asking Price: </label>
+<input type="text" name="asking_price" />
+<br>
+<label>Keywords: </label>
+<input type="text" name="keywords" />
+<br>
+  <input value="Save new item" type="submit"/>
+</form>

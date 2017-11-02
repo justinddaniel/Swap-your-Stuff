@@ -59,6 +59,26 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/items/new' do
+    if logged_in?
+      erb :'items/create_item'
+    else
+      redirect "/login"
+    end
+  end
+
+  post '/items' do
+    item_user = User.find_by_id(session[:user_id])
+    if params["name"] != "" && params["description"] != ""
+      new_item = Item.create(params)
+      new_item.user = item_user
+      new_item.save
+      redirect "/users/#{item_user.id}"
+    else
+      redirect "/items/new"
+    end
+  end
+
 
 
   helpers do

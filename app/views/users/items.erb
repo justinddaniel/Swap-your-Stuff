@@ -1,6 +1,6 @@
 <h2> Your current inventory of items </h2>
 <br>
-<a href ='/'> To add a new item to your inventory click here (link will be functional soon) </a>
+<a href ='/items/new'> To add a new item to your inventory click here (link will be functional soon) </a>
 <br>
 <% @user.items.each do |i| %>
   <p> Name of item: <%= i.name %> </p>
@@ -20,4 +20,4 @@
   <br>
 <% end %>
 <br>
-<a href ='/'> To add a new item to your inventory click here (link will be functional soon) </a>
+<a href ='/items/new'> To add a new item to your inventory click here (link will be functional soon) </a>
