@@ -116,6 +116,31 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  patch '/items/:id' do
+    @item_to_edit = Item.find(params[:id])
+    if params[:name] != ""
+      @item_to_edit.name = params[:name]
+      @item_to_edit.save
+    end
+    if params[:description] != ""
+      @item_to_edit.description = params[:description]
+      @item_to_edit.save
+    end
+    if params[:condition] != ""
+      @item_to_edit.condition = params[:condition]
+      @item_to_edit.save
+    end
+    if params[:asking_price] != ""
+      @item_to_edit.asking_price = params[:asking_price]
+      @item_to_edit.save
+    end
+    if params[:keywords] != ""
+      @item_to_edit.keywords = params[:keywords]
+      @item_to_edit.save
+    end
+    redirect "/items/#{@item_to_edit.id}"
+  end
+
 
 
   helpers do
