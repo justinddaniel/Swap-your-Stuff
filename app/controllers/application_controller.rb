@@ -59,6 +59,16 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/items' do
+    @all_tradeable_items = []
+    Items.all.each do |i|
+      if i.tradeable? == true
+        @all_tradeable_items << i
+      end
+    end
+    erb :'items/show'
+  end
+
   get '/items/new' do
     if logged_in?
       erb :'items/create_item'
