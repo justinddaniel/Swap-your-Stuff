@@ -61,7 +61,7 @@ class ApplicationController < Sinatra::Base
 
   get '/items' do
     @all_tradeable_items = []
-    Items.all.each do |i|
+    Item.all.each do |i|
       if i.tradeable? == true
         @all_tradeable_items << i
       end

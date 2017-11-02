@@ -1,0 +1,20 @@
+<h1> Here is a current listing of all tradeable items posted by all users. </h1>
+<br>
+<% @all_tradeable_items.each do |i| %>
+  <p> Name of item: <%= i.name %> </p>
+  <br>
+  <p> Description: <%= i.description %> </p>
+  <br>
+  <p> Tradeable? (if true it is publicly viewable) <%= i.tradeable? %> </p>
+  <br>
+  <p> Condition: <%= i.condition %> </p>
+  <br>
+  <p> Asking Price: $ <%= i.asking_price %> </p>
+  <br>
+  <p> Keywords (help others find your item): <%= i.keywords %> </p>
+  <br>
+  <p> Email of owner of item: <%= i.user.email %> </p>
+  <br>
+  <p> ------------------------------------------------------------- </p>
+  <br>
+<% end %>
