@@ -1,0 +1,23 @@
+<h2> Here is the current item you wish to view </h2>
+<br>
+<a href ='/items/new'> To add a new item to your inventory click here</a>
+<br>
+  <p> Name of item: <%= @item_to_view.name %> </p>
+  <br>
+  <p> Description: <%= @item_to_view.description %> </p>
+  <br>
+  <p> Tradeable? (if true it is publicly viewable) <%= @item_to_view.tradeable? %> </p>
+  <br>
+  <p> Condition: <%= @item_to_view.condition %> </p>
+  <br>
+  <p> Asking Price: $ <%= @item_to_view.asking_price %> </p>
+  <br>
+  <p> Keywords (help others find your item): <%= @item_to_view.keywords %> </p>
+  <br>
+  <% if @item_to_view.user_id == session[:user_id] %>
+    <a href ='/items/<%= @item_to_view.id %>/edit'> Edit this item (link will be functional soon) </a>
+  <% end %>
+  <br>
+  <br>
+<br>
+<a href ='/items/new'> To add a new item to your inventory click here </a>

@@ -89,6 +89,20 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/items/:id' do
+    if logged_in?
+      if (session[:user_id] == Item.find_by_id(params[:id]).user_id) ||
+      (Item.find_by_id(params[:id]).tradeable? == true)
+        @item_to_view = Item.find_by_id(params[:id])
+        erb :'items/one'
+      else
+        redirect '/items'
+      end
+    else
+      redirect '/login'
+    end
+  end
+
 
 
   helpers do
