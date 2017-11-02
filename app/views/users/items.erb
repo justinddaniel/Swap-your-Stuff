@@ -1,5 +1,8 @@
 <h2> Your current inventory of items </h2>
 <br>
+<a href='/logout'> Click here to log out of this session. </a>
+<br>
+<br>
 <a href ='/items/new'> To add a new item to your inventory click here</a>
 <br>
 <% @user.items.each do |i| %>
@@ -15,9 +18,15 @@
   <br>
   <p> Keywords (help others find your item): <%= i.keywords %> </p>
   <br>
-  <a href ='/items/<%= i.id %>/edit'> Edit this item (link will be functional soon) </a>
+  <a href ='/items/<%= i.id %>/edit'> Edit this item  </a>
   <br>
+  <p> Click below to delete this item </p>
+  <form action="/items/<%= i.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type = "submit" value = "Delete Item">
+  </form>
   <br>
+  ---------------------------------------------------------------------
 <% end %>
 <br>
 <a href ='/items/new'> To add a new item to your inventory click here </a>

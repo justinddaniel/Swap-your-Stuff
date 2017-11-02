@@ -79,7 +79,7 @@ class ApplicationController < Sinatra::Base
 
   post '/items' do
     item_user = User.find_by_id(session[:user_id])
-    if params["name"] != "" && params["description"] != "" && (params["tradeable?"] != nil || "")
+    if params["name"] != "" && params["description"] != "" && (params["tradeable?"] != nil)
       new_item = Item.create(params)
       new_item.user = item_user
       new_item.save
