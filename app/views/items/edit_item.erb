@@ -12,6 +12,14 @@
 <br>
 <p> Keywords (help others find your item): <%= @item_to_edit.keywords %> </p>
 <br>
+<p> Click below to delete this item </p>
+<form action="/items/<%= @item_to_edit.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type = "submit" value = "Delete Item">
+</form>
+<p> Fill out the form below to edit your item. Any fields left blank will remain
+  the same for the item. </p>
+  <br>
 <form action= '/items/<%= @item_to_edit.id %>' method = "post">
   <input type="hidden" name="_method" value="patch">
   <label>Name: </label>
@@ -20,10 +28,11 @@
   <label>Description: </label>
   <input type="text" name="description" />
   <br>
-  <label>Tradeable? </label>
+  <label>Click here to make item tradeable </label>
   <input type="checkbox" name="tradeable?" value = "true"/>
   <br>
-  <p> Note: checking the box makes your item publicly viewable and tradeable. </p>
+  <label>Click here to make item private and NOT tradeable </label>
+  <input type="checkbox" name="tradeable?" value = "false"/>
   <br>
   <label>Condition: </label>
   <input type="text" name="condition" />

@@ -79,7 +79,7 @@ class ApplicationController < Sinatra::Base
 
   post '/items' do
     item_user = User.find_by_id(session[:user_id])
-    if params["name"] != "" && params["description"] != ""
+    if params["name"] != "" && params["description"] != "" && (params["tradeable?"] != nil || "")
       new_item = Item.create(params)
       new_item.user = item_user
       new_item.save
@@ -126,6 +126,14 @@ class ApplicationController < Sinatra::Base
       @item_to_edit.description = params[:description]
       @item_to_edit.save
     end
+    if params[:tradeable?] == true
+      @item_to_edit.tradeable?
+      @item_to_edit.save
+    end
+    if params[:tradeable?] == false
+      @item_to_edit.tradeable?
+      @item_to_edit.save
+    end
     if params[:condition] != ""
       @item_to_edit.condition = params[:condition]
       @item_to_edit.save
@@ -141,6 +149,24 @@ class ApplicationController < Sinatra::Base
     redirect "/items/#{@item_to_edit.id}"
   end
 
+  delete '/items/:id/delete' do
+    @item_to_delete = Item.find(params[:id])
+    if @item_to_delete.user_id == session[:user_id]
+      @item_to_delete.delete
+      redirect '/items'
+    else
+      redirect '/items'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect '/login'
+    else
+      redirect "/"
+    end
+  end
 
 
   helpers do
